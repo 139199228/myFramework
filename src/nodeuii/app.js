@@ -34,5 +34,5 @@ app.use(serve(__dirname + '/public/'));
 controllerInit(app,router)
 
 app.listen(config.port,function(){
-    console.log(`端口${config.port}加载中...`)
+    // console.log(`端口${config.port}加载中...`)
 })

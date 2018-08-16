@@ -4,7 +4,7 @@ const watch = require('gulp-watch');
 const rollup = require('gulp-rollup');
 const gulpSequence = require('gulp-sequence')
 const replace = require('rollup-plugin-replace');
-
+const eslint = require('gulp-eslint');
 
 
 gulp.task('builddev', () => {
@@ -44,9 +44,19 @@ gulp.task('configclear', function () {
     }))
     .pipe(gulp.dest('./dist'));
 });
+gulp.task('lint', () => {
+  gulp.src('./src/nodeuii/**/*.js')
+      .pipe(eslint())
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError());
+});
 let _task = ["builddev"];
 
 if (process.env.NODE_ENV === "production") {
-  _task = gulpSequence('buildpro', 'configclear') //异步的  还需要安装个队列sequence
+  _task = gulpSequence('lint','buildpro', 'configclear') //异步的  还需要安装个队列sequence
+}
+if(process.env.NODE_ENV === 'lint'){
+  _task = ['lint']
+
 }
 gulp.task("default", _task)
