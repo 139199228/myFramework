@@ -14,7 +14,7 @@ gulp.task('builddev', () => {
     gulp.src('./src/nodeuii/**/*.js') //编译nodeuii下面点所有js文件
       .pipe(babel({
         babelrc: false, //关闭外侧点src
-        "plugins": ["transform-es2015-modules-commonjs"]
+        'plugins': ['transform-es2015-modules-commonjs','transform-decorators-legacy']
       }))
       .pipe(gulp.dest('dist'))
   })
@@ -23,7 +23,8 @@ gulp.task('buildpro', () => {
   gulp.src('./src/nodeuii/**/*.js') //编译nodeuii下面点所有js文件
     .pipe(babel({
       babelrc: false, //关闭外侧点src
-      "plugins": ["transform-es2015-modules-commonjs"]
+      ignore:['./src/nodeui/config/*.js'],
+      'plugins': ['transform-es2015-modules-commonjs','transform-decorators-legacy']
     }))
     .pipe(gulp.dest('dist'))
 });
@@ -53,7 +54,7 @@ gulp.task('lint', () => {
 let _task = ["builddev"];
 
 if (process.env.NODE_ENV === "production") {
-  _task = gulpSequence('lint','buildpro', 'configclear') //异步的  还需要安装个队列sequence
+  _task = gulpSequence(['lint','buildpro', 'configclear']) //异步的  还需要安装个队列sequence
 }
 if(process.env.NODE_ENV === 'lint'){
   _task = ['lint']

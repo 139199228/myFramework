@@ -19,10 +19,7 @@
  * return new Promise
  * getData
  */
-class IndexModel{
-    
-    constructor(){}
-
+class IndexService{
     getData(){
         return new Promise((resolve)=>{
             setTimeout(() => {
@@ -31,4 +28,3 @@ class IndexModel{
         })
     }
 }
-export default IndexModel
