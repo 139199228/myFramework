@@ -45,7 +45,7 @@ middleWares.error(app,logger);
 app.use(loadControllers('controllers/*.js', { cwd: __dirname }))
 
 // controllerInit(app,router)
-app.use(serve(__dirname + '/public/'));
+app.use(serve(config.staticDir));
 
 app.listen(config.port,function(){
     console.log(`端口${config.port}加载中...`)

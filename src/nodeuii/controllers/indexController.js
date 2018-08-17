@@ -5,12 +5,11 @@ export default
 @route("/")
 @route("/index.html")
 class IndexController{
-    constructor({dataService}){
-        console.log(dataService)
-        this.dataService = dataService
+    constructor({indexService}){
+        this.indexService = indexService
     }
     @GET()
-    async indexInit(ctx){
+    async indexAction(ctx){
 
             // const indexModel = new IndexModel()
             // const result = await indexModel.getData()
@@ -18,10 +17,9 @@ class IndexController{
             //     result
             // })
             
-            console.log(ctx)
-            console.log(this.dataService)
-            const result = await this.dataService.getData()
-            ctx.body = await ctx.render('index',{data:result})
+            console.log(this.indexService.getData())
+            const result = await this.indexService.getData()
+            ctx.body = await ctx.render('index',{result})
         
     }
 }
