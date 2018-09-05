@@ -40,3 +40,12 @@
     可以使用   awilix 比较好用
 
 ####  装饰器  babel-plugin-transform-decorators-legacy   灌入到 gulp plugins
+
+
+
+
+file-loader
+
+liveReloadPlugin
+copyWebackPlugin
+html-minifile

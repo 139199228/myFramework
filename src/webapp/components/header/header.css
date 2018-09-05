@@ -1,3 +1,15 @@
-// .components-header{
+:root{
+    --textColor:red;
+    --fontColor:yellow;
+}
 
-// }
+
+.components-header{
+    & .header{
+        background: var(--textColor);
+    }
+    & h1{
+        color:var(--textColor);
+        color:var(--fontColor)
+    }
+}

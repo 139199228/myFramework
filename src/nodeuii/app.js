@@ -32,10 +32,11 @@ container.loadModules([__dirname+'/service/*.js'],{
     lifetime:Lifetime.SCOPED
   }
 });
+let Env = process.env.NODE_ENV === 'development'? false:"memory"
 app.context.render = co.wrap(render({
     root: config.viewDir,
     autoescape: true,
-    cache: 'memory', // disable, set to false
+    cache: Env, // disable, set to false
     ext: 'html',
     varControls:["[[","]]"],
     writeBody: false

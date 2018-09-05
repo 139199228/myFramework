@@ -10,16 +10,13 @@ class IndexController{
     }
     @GET()
     async indexAction(ctx){
-
             // const indexModel = new IndexModel()
             // const result = await indexModel.getData()
             // ctx.body= await ctx.render("index",{
             //     result
             // })
-            
-            console.log(this.indexService.getData())
             const result = await this.indexService.getData()
-            ctx.body = await ctx.render('index',{result})
+            ctx.body = await ctx.render('index/pages/index',{result})
         
     }
 }
